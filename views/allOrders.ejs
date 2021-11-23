@@ -1,0 +1,61 @@
+<!-- Author: Amritpal Singh-->
+<%- include('layouts/head'); %>
+
+    <%- include('layouts/header') %>
+        <%- include('layouts/nav'); -%>
+            <main class="allOrders">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">City</th>
+                            <th scope="col">Province</th>
+                            <th scope="col">Postal Code</th>
+                            <th scope="col">Subtotal</th>
+                            <th scope="col">Tax Percentage</th>
+                            <th scope="col">Tax Amount</th>
+                            <th scope="col">Total Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var order of orders){ %>
+                            <tr>
+                                <td>
+                                    <%= order.name %>
+                                </td>
+                                <td>
+                                    <%= order.email %>
+                                </td>
+                                <td>
+                                    <%= order.phone %>
+                                </td>
+                                <td>
+                                    <%= order.city %>
+                                </td>
+                                <td>
+                                    <%= order.province %>
+                                </td>
+                                <td>
+                                    <%= order.postalCode %>
+                                </td>
+                                <td>
+                                    $<%= order.purchaseSubTotal.toFixed(2) %>
+                                </td>
+                                <td>
+                                    <%= order.taxPercentage.toFixed(2) %>%
+                                </td>
+                                <td>
+                                    $<%= order.taxAmount.toFixed(2) %>
+                                </td>
+                                <td>
+                                    $<%= order.totalAmount.toFixed(2) %>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
+            </main>
+
+            <%- include('layouts/footer'); -%>

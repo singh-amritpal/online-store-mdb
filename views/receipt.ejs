@@ -1,0 +1,191 @@
+<!-- Author: Amritpal Singh-->
+<%- include('layouts/head'); %>
+
+    <%- include('layouts/header') %>
+        <%- include('layouts/nav'); -%>
+            <main class="myReceipt">
+                <div>
+                    <!-- Start Customer Details Section -->
+                    <div>
+                        <table class="table">
+                            <!-- Start Customer Name -->
+                            <tr>
+                                <th scope="row">Name</th>
+                                <td>
+                                    <%= name %>
+                                </td>
+                            </tr>
+                            <!-- End Customer Name -->
+                            <!-- Start Customer Email -->
+                            <tr>
+                                <th scope="row">Email</th>
+                                <td>
+                                    <%= email %>
+                                </td>
+                            </tr>
+                            <!-- End Customer Email -->
+                            <!-- Start Customer Phone -->
+                            <tr>
+                                <th scope="row">Phone</th>
+                                <td>
+                                    <%= phone %>
+                                </td>
+                            </tr>
+                            <!-- End Customer Phone -->
+                            <!-- Start Customer Address -->
+                            <tr>
+                                <th scope="row">Address</th>
+                                <td>
+                                    <%= address %>
+                                </td>
+                            </tr>
+                            <!-- End Customer Address -->
+                            <!-- Start City -->
+                            <tr>
+                                <th scope="row">City</th>
+                                <td>
+                                    <%= city %>
+                                </td>
+                            </tr>
+                            <!-- End City -->
+                            <!-- Start Province -->
+                            <tr>
+                                <th scope="row">Province</th>
+                                <td>
+                                    <%= province %>
+                                </td>
+                            </tr>
+                            <!-- End Province -->
+                            <!-- Start Province -->
+                            <tr>
+                                <th scope="row">Postal Code</th>
+                                <td>
+                                    <%= postalCode %>
+                                </td>
+                            </tr>
+                            <!-- End Province -->
+                        </table>
+                    </div>
+                    <!-- End Customer Details Section  -->
+                    <!-- Start Receipt Table -->
+                    <table class="table">
+                        <!-- Start Receipt Headers -->
+                        <thead>
+                            <tr>
+                                <th scope="col">Item</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col" style="text-align: right;">Unit Price</th>
+                                <th scope="col" style="text-align: right;">Total Price</th>
+                            </tr>
+                        </thead>
+                        <!-- End Receipt Headers -->
+                        <!-- Start Receipt Body -->
+                        <tbody>
+                            <!-- Start Receipt_Item 1 -->
+                            <% if(typeof(cookies) !='undefined' && cookies> 0){%>
+                                <tr name="receiptCookies">
+                                    <th scope="row">Cookies</th>
+                                    <td id="cookiesQuantity" style="text-align: center;">
+                                        <%= cookies %>
+                                    </td>
+                                    <td id="cookiesUnitPrice" style="text-align: right;">$5.00</td>
+                                    <td id="cookiesTotalPrice" style="text-align: right;">$<%=
+                                            cookiesPurchasePrice.toFixed(2) %>
+                                    </td>
+                                </tr>
+                                <% } %>
+                            <!-- End Receipt_Item 1 -->
+                            <!-- Start Receipt_Item 2 -->
+                            <% if(typeof(biscuits) !='undefined' && biscuits> 0){%>
+                                <tr id="receiptbiscuits" name="receiptbiscuits">
+                                    <th scope="row">Biscuits</th>
+                                    <td id="biscuitsQuantity" style="text-align: center;">
+                                        <%= biscuits %>
+                                    </td>
+                                    <td id="biscuitsUnitPrice" style="text-align: right;">$10.00</td>
+                                    <td id="biscuitsTotalPrice" style="text-align: right;">$<%=
+                                            biscuitsPurchasePrice.toFixed(2) %>
+                                    </td>
+                                </tr>
+                                <% } %>
+                            <!-- End Receipt_Item 2 -->
+                            <!-- Start Receipt_Item 3 -->
+                            <% if(typeof(drink) !='undefined' && drink> 0){%>
+                                <tr id="receiptdrinks" name="receiptdrinks">
+                                    <th scope="row">Soft Drinks</th>
+                                    <td id="drinksQuantity" style="text-align: center;">
+                                        <%= drink %>
+                                    </td>
+                                    <td id="drinksUnitPrice" style="text-align: right;">$2.00</td>
+                                    <td id="drinksTotalPrice" style="text-align: right;">$<%=
+                                            drinkPurchasePrice.toFixed(2) %>
+                                    </td>
+                                </tr>
+                            <% } %>
+                            <!-- End Receipt_Item 3 -->
+                            <!-- Start Receipt_Item 4 -->
+                            <% if(typeof(chips) !='undefined' && chips> 0){%>
+                                <tr id="receiptchips" name="receiptchips">
+                                    <th scope="row">Chips</th>
+                                    <td id="chipsQuantity" style="text-align: center;">
+                                        <%= chips %>
+                                    </td>
+                                    <td id="chipsUnitPrice" style="text-align: right;">$4.00
+                                    </td>
+                                    <td id="chipsTotalPrice" style="text-align: right;">$<%=
+                                            chipsPurchasePrice.toFixed(2) %>
+                                    </td>
+                                </tr>
+                            <% } %>
+                            <!-- End Receipt_Item 4 -->
+                            <!-- Start Receipt_Item 5 -->
+                            <% if(typeof(cupCakes) !='undefined' && cupCakes> 0){%>
+                                <tr id="receiptCupCakes" name="receiptCupCakes">
+                                    <th scope="row">Cup Cakes</th>
+                                    <td id="cupCakesQuantity"
+                                        style="text-align: center;">
+                                        <%= cupCakes %>
+                                    </td>
+                                    <td id="cupCakesUnitPrice"
+                                        style="text-align: right;">$3.00</td>
+                                    <td id="cupCakesTotalPrice"
+                                        style="text-align: right;">$<%=
+                                            cupCakesPurchasePrice.toFixed(2) %>
+                                    </td>
+                                </tr>
+                            <% } %>
+                            <!-- End Receipt_Item 5 -->
+                            <!-- Start Sub-Total -->
+                            <tr>
+                                <th scope="row" colspan="3">Sub Total</th>
+                                <td id="subTotal" style="text-align: right;">$
+                                    <%= purchaseSubTotal.toFixed(2) %>
+                                </td>
+                            </tr>
+                            <!-- End SubTotal -->
+                            <!-- Start Sub-Total -->
+                            <tr>
+                                <th scope="row" colspan="3">Tax Amount @ <%=
+                                        taxPercentage.toFixed(2) %>%</th>
+                                <td id="subTotal" style="text-align: right;">$
+                                    <%= taxAmount.toFixed(2) %>
+                                </td>
+                            </tr>
+                            <!-- End SubTotal -->
+                            <!-- Start Receipt Total  -->
+                            <tr id="receiptTotal">
+                                <th scope="row" colspan="3">Total</th>
+                                <td id="totalPrice" style="text-align: right;">$
+                                    <%= totalAmount.toFixed(2) %>
+                                </td>
+                            </tr>
+                            <!-- End Receipt Total -->
+                        </tbody>
+                        <!-- End Receipt Body  -->
+                    </table>
+                    <!-- End Receipt Table -->
+                </div>
+                <!-- End Receipt Section -->
+            </main>
+
+        <%- include('layouts/footer'); %>

@@ -1,0 +1,196 @@
+<!-- Author: Amritpal Singh-->
+
+<% 
+    var name = '';
+    var email = '';
+    var phone = '';
+    var address = '';
+    var city = '';  
+    var province = '';  
+    
+    var nameError = '';
+    var emailError = '';
+    var phoneError = '';
+    var addressError = '';
+    var cityError = '';  
+    var provinceError = '';  
+    var purchaseError = '';
+    
+  if(typeof(errors) !='undefined' )
+  { 
+    for (var error of errors)
+    { 
+      switch(error.param){
+        case 'name':            name = error.value;
+                                nameError = error.msg;
+                                break;
+        case 'email':           email = error.value;
+                                emailError = error.msg;
+                                break;
+        case 'phone':           phone = error.value;
+                                phoneError = error.msg;
+                                break;
+        case 'address':         address = error.value;
+                                addressError = error.msg;
+                                break;
+        case 'city':            city = error.value;
+                                cityError = error.msg;
+                                break;
+        case 'province':        province = error.value;
+                                provinceError = error.msg;
+                                break;
+        case 'cookies':         purchaseError = error.msg;
+                                break;
+        }
+    } 
+  } 
+%>
+
+<%- include('layouts/head'); %>
+    <%- include('layouts/header') %>
+        <%- include('layouts/nav'); -%>
+        <main class="myForm">
+            <form method="Post" onsubmit="return formSubmit();" action="process">
+                <aside>
+                    <div class="form-group col-md-10">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="First Last">
+                        <p class="error">
+                            <%= nameError %>
+                        </p>
+                    </div>
+
+                    <div class="form-group col-md-10">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" id="email" name="email"
+                            placeholder="someone@example.com">
+                        <p class="error">
+                            <%= emailError %>
+                        </p>
+                    </div>
+
+                    <div class="form-group col-md-10">
+                        <label for="phone">Phone</label>
+                        <input type="text" class="form-control" id="phone" name="phone" placeholder="xxx-xxx-xxxx">
+                        <p class="error">
+                            <%= phoneError %>
+                        </p>
+                    </div>
+
+                    <div class="form-group col-md-10">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" id="address" name="address"
+                            placeholder="Apt. No., Street No.">
+                        <p class="error">
+                            <%= addressError %>
+                        </p>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-5">
+                            <label for="city">City</label>
+                            <input type="text" class="form-control" id="city" name="city">
+                            <p class="error">
+                                <%= cityError %>
+                            </p>
+                        </div>
+
+                        <div class="form-group col-md-5">
+                            <label for="province">Province</label>
+                            <select id="province" name="province" class="form-control">
+                                <option value="selected" selected>Choose...</option>
+                                <option value="Alberta">Alberta</option>
+                                <option value="British Columbia">British Columbia</option>
+                                <option value="Manitoba">Manitoba</option>
+                                <option value="New Brunswick">New Brunswick</option>
+                                <option value="Newfoundland and Labrador">Newfoundland and Labrador</option>
+                                <option value="Northwest Territories">Northwest Territories</option>
+                                <option value="Nova Scotia">Nova Scotia</option>
+                                <option value="Nunavut">Nunavut</option>
+                                <option value="Ontario">Ontario</option>
+                                <option value="Prince Edward Island">Prince Edward Island</option>
+                                <option value="Quebec">Quebec</option>
+                                <option value="Saskatchewan">Saskatchewan</option>
+                                <option value="Yukon">Yukon</option>
+                            </select>
+                            <p class="error">
+                                <%= provinceError %>
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group col-md-10">
+                        <label for="postalCode">Postal Code</label>
+                        <input type="text" class="form-control" id="postalCode" name="postalCode" maxlength="7"
+                            style="text-transform:uppercase" onkeyup="postalCodeSpace(this)">
+                    </div>
+                </aside>
+
+                <section>
+                    <!-- Start Sale Items  -->
+                    <div>
+                        <!-- Start Sale_Item 1 -->
+                        <div class="mb-3 row">
+                            <label for="cookies" class="col-md-10 col-form-label">Cookies ($5)</label>
+                            <div class="col-md-10 saleItemInput">
+                                <input type="text" class="form-control saleItems" id="cookies" name="cookies"
+                                    value="0" />
+                            </div>
+                        </div>
+                        <!-- End Sale_Item 1 -->
+
+                        <!-- Start Sale_Item 2 -->
+                        <div class="mb-3 row">
+                            <label for="biscuits" class="col-md-10  col-form-label">Biscuits ($10)</label>
+                            <div class="col-md-10 saleItemInput">
+                                <input type="text" class="form-control saleItems" id="biscuits" name="biscuits"
+                                    value="0" />
+                            </div>
+                        </div>
+                        <!-- End Sale_Item 2 -->
+
+                        <!-- Start Sale_Item 3 -->
+                        <div class="mb-3 row">
+                            <label for="drink" class="col-md-10  col-form-label">Soft Drink ($2)</label>
+                            <div class="col-md-10 saleItemInput">
+                                <input type="text" class="form-control saleItems" id="drink" name="drink"
+                                    value="0" />
+                            </div>
+                        </div>
+                        <!-- End Sale_Item 3 -->
+
+                        <!-- Start Sale_Item 4 -->
+                        <div class="mb-3 row">
+                            <label for="chips" class="col-md-10  col-form-label">Chips ($4)</label>
+                            <div class="col-sm-10 saleItemInput">
+                                <input type="text" class="form-control saleItems" id="chips" name="chips"
+                                    value="0" />
+                            </div>
+                        </div>
+                        <!-- End Sale_Item 4 -->
+
+                        <!-- Start Sale_Item 5 -->
+                        <div class="mb-3 row">
+                            <label for="cupCakes" class="col-md-10  col-form-label">Cup Cakes ($3)</label>
+                            <div class="col-sm-10 saleItemInput">
+                                <input type="text" class="form-control saleItems" id="cupCakes" name="cupCakes"
+                                    value="0" />
+                            </div>
+                        </div>
+                        <!-- End Sale_Item 5 -->
+                    </div>
+                    <!-- End Sale Items  -->
+                    <p class="purchaseError">
+                        <%= purchaseError %>
+                    </p>
+                    <!-- Start Submit Button  -->
+                    <div id="submitButton" class="form-group">
+                        <input type="submit" class="btn btn-primary btn-lg btn-block" id="submit" name="submit"
+                            value="Checkout">
+                    </div>
+                    <!-- End Submit Button -->
+                </section>
+            </form>
+        </main>
+
+        <%- include('layouts/footer'); %>
